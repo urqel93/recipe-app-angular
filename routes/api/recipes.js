@@ -143,7 +143,7 @@ router.post(
 
 router.delete(
   '/comment/:id/:comment_id',
-  passport.authenticate('jwt', { session: false }),
+  passport.authenticate('jwt', {session: false}),
   (req, res) => {
     Recipe.findById(req.params.id)
       .then(recipe => {
@@ -155,7 +155,7 @@ router.delete(
         ) {
           return res
             .status(404)
-            .json({ commentnotexists: 'Comment does not exist' });
+            .json({commentnotexists: 'Comment does not exist'});
         }
 
         // Get remove index
@@ -168,7 +168,7 @@ router.delete(
 
         recipe.save().then(recipe => res.json(recipe));
       })
-      .catch(err => res.status(404).json({ recipenotfound: 'No recipe found' }));
+      .catch(err => res.status(404).json({recipenotfound: 'No recipe found'}));
   }
 );
 
