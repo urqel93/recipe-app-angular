@@ -19,7 +19,8 @@ export class AuthService {
   constructor(private http: HttpClient,
               private router: Router,
               private userService: UserService) {
-
+    console.log(this.isTokenExpired());
+    this.checkToken();
   }
 
   getToken(): string {
@@ -48,6 +49,13 @@ export class AuthService {
     const date = this.getTokenExpirationDate(token);
     if (date === undefined) return false;
     return !(date.valueOf() > new Date().valueOf());
+  }
+
+  checkToken() {
+    if (this.isTokenExpired()) {
+      this.userService.user = null;
+      localStorage.removeItem('currentUser');
+    }
   }
 
   login(user): Observable<any> {

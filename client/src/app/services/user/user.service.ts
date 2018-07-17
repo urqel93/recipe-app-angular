@@ -14,7 +14,7 @@ export class UserService {
   user: User = new User();
 
   constructor(private http: HttpClient) {
-    this.getCurrentUser()
+    this.getCurrentUser();
   }
 
   setCurrentUser(u: User) {
@@ -24,7 +24,7 @@ export class UserService {
   }
 
   getCurrentUser(): User {
-    let ls =localStorage.getItem('currentUser');
+    let ls = localStorage.getItem('currentUser');
     return this.user = ls ? this.user = JSON.parse(ls) : null;
   }
 

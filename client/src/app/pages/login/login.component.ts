@@ -23,7 +23,7 @@ export class LoginComponent {
   onSubmit(form: any) {
     this.auth.login(this.user).subscribe(res => {
       this.auth.setToken(res.token);
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/myrecipes');
       this.userService.currentUser().subscribe(
         res => {
           this.userService.setCurrentUser(res);

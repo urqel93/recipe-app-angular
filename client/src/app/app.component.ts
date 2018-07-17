@@ -11,11 +11,12 @@ import Recipe = Classes.Recipe;
 export class AppComponent implements OnInit {
 
 
-  constructor() {
+  constructor(private auth: AuthService) {
 
   }
 
   ngOnInit() {
+    console.log(this.auth.getTokenExpirationDate(localStorage.getItem('jwtToken')));
   }
 
 }

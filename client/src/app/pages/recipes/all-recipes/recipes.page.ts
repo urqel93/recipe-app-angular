@@ -28,6 +28,7 @@ export class RecipesPage implements OnInit {
       res.forEach(data => {
         this.recipes.push(Recipe.create(data));
       })
+      console.log(this.recipes);
     })
   }
 

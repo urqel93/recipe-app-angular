@@ -1,0 +1,13 @@
+<div class="feed">
+  <div class="container">
+    <recipe-form></recipe-form>
+    <div class="row">
+      <div class="col-md-12">
+        <div *ngFor="let r of recipes">
+          <recipe-card [recipe]="r"
+                       [deleteVisible]="true"></recipe-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

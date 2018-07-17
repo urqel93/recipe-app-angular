@@ -14,6 +14,10 @@ import {RegisterComponent} from "./pages/register/register.component";
 import {RecipeCardComponent} from "./components/shared/recipe-card/recipe-card.component";
 import {RecipesPage} from "./pages/recipes/all-recipes/recipes.page";
 import {RecipeDetailsPage} from "./pages/recipes/recipe-details/recipe.details.page";
+import {MyRecipesPage} from "./pages/recipes/my-recipes/my.recipes.page";
+import {RecipeFormComponent} from "./components/shared/recipe-form/recipe.form.component";
+import {CommentFormComponent} from "./components/shared/comment-form/comment.form.component";
+import {CommentItemComponent} from "./components/shared/comment-item/comment.item.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import {RecipeDetailsPage} from "./pages/recipes/recipe-details/recipe.details.p
     FooterComponent,
     RecipeCardComponent,
     RecipesPage,
-    RecipeDetailsPage
+    RecipeDetailsPage,
+    MyRecipesPage,
+    RecipeFormComponent,
+    CommentFormComponent,
+    CommentItemComponent
   ],
   imports: [
     BrowserModule,

@@ -27,11 +27,11 @@ export namespace Classes {
     date: Date;
     comments: Comment[];
 
-    public static create(data: any) {
-      let comments = data['comments'] ?
-        data['comments'].forEach(data => {
-          Comment.create(data)
-        }) : null;
+    public static create(data: any): Recipe {
+      let comments = [];
+      data['comments'] ? data['comments'].forEach(d => {
+        comments.push(Comment.create(d));
+      }) : null;
       let model: Recipe = new Recipe;
       model.id = data['_id'] ? data['_id'] : null;
       model.user = data['user'] ? User.create(data['user']) : null;
@@ -39,6 +39,7 @@ export namespace Classes {
       model.shortText = data['shortText'] ? data['shortText'] : null;
       model.description = data['description'] ? data['description'] : null;
       model.ingredients = data['ingredients'] ? data['ingredients'] : null;
+      model.userName = data['userName'] ? data['userName'] : null;
       model.date = data['date'] ? data['date'] : Date.now();
       model.comments = comments;
       return model;
@@ -52,13 +53,14 @@ export namespace Classes {
     avatar: string;
     date: Date;
 
-    public static create(data: any) {
+    public static create(data: any): Comment {
       let model: Comment = new Comment;
       model.user = data['user'] ? data['user'] : null;
       model.userName = data['userName'] ? data['userName'] : null;
       model.text = data['text'] ? data['text'] : null;
       model.avatar = data['avatar'] ? data['avatar'] : null;
       model.date = data['date'] ? data['date'] : Date.now();
+      return model;
     }
   }
 

@@ -1,0 +1,27 @@
+<div class="post-form mb-3">
+  <div class="card card-info">
+    <div class="card-header bg-info text-white">
+      Say what you think about this recipe!
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit(commentForm)" #commentForm="ngForm">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            placeholder="Comment recipe"
+            name="text"
+            [(ngModel)]="comment.text"
+            #text="ngModel"
+            required
+          />
+          <div [hidden]="text.valid || text.pristine"
+               class="alert alert-danger">
+            Comment is required
+          </div>
+        </div>
+        <button type="submit" class="btn btn-dark" [disabled]="!commentForm.form.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

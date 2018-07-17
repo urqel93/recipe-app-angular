@@ -2,6 +2,7 @@ import {Component, Input} from "@angular/core";
 import {Classes} from "../../../utils/classes";
 import Recipe = Classes.Recipe;
 import {Router} from "@angular/router";
+import {RecipeService} from "../../../services/recipe/recipe.service";
 
 @Component({
   selector: 'recipe-card',
@@ -11,9 +12,17 @@ import {Router} from "@angular/router";
 })
 
 export class RecipeCardComponent {
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private recipeService: RecipeService) {
 
   }
 
   @Input() recipe: Recipe;
+  @Input() deleteVisible: boolean = false;
+
+  deleteRecipe(id: string) {
+    this.recipeService.deleteRecipe(id).subscribe(res => {
+      console.log(res);
+    })
+  }
 }
