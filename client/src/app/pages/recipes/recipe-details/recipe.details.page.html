@@ -1,0 +1,23 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <a routerLink="/recipes" class="btn btn-light mb-3 float-left">
+        Back To Recipes
+      </a>
+    </div>
+    <div class="col-md-6"></div>
+    <div *ngIf="recipe" class="col-md-12">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{recipe.name}}</h5>
+
+          <h6 class="card-subtitle mb-2 text-muted">{{recipe.shortText}}</h6>
+          <p class="card-text">{{recipe.ingredients}}</p>
+          <p class="card-text">{{recipe.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

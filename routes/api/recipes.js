@@ -59,11 +59,11 @@ router.get('/myrecipes', passport.authenticate('jwt', {session: false}),
       .then(recipes => res.json(recipes))
       .catch(err => res.status(404).json({norecipesfound: 'No recipes found'}));
   });
-// @route   GET api/recipes/handle/:handle
+// @route   GET api/recipes/:handle
 // @desc    Get recipe by handle
 // @access  Public
 
-router.get('/recipe/:handle', (req, res) => {
+router.get('/:handle', (req, res) => {
   const errors = {};
 
   Recipe.findOne({_id: req.params.handle})

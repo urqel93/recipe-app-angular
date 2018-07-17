@@ -1,0 +1,9 @@
+export const API_URL = "http://localhost:5000/api/";
+export const LOGIN = "users/login";
+export const CURRENT_USER = "users/current";
+export const REGISTER = "users/register";
+export const GET_RECIPES = "recipes";
+export const ADD_RECIPE = "recipes/add";
+export const DELETE_RECIPE = "recipes/:id";
+export const MY_RECIPES = "recipes/myrecipes";
+export const RECIPE_BY_HANDLE = "recipes/";

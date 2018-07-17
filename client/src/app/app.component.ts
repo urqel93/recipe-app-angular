@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {AuthService} from "./services/auth.service";
+import {AuthService} from "./services/auth/auth.service";
+import {Classes} from "./utils/classes";
+import Recipe = Classes.Recipe;
 
 @Component({
   selector: 'app-root',
@@ -7,13 +9,13 @@ import {AuthService} from "./services/auth.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private authService: AuthService) {
+
+
+  constructor() {
 
   }
 
   ngOnInit() {
-    this.authService.getRecipe().subscribe(res => {
-      console.log(res);
-    });
   }
+
 }
