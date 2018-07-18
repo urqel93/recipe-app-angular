@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Classes} from "../../../utils/classes";
 import Recipe = Classes.Recipe;
 import {RecipeService} from "../../../services/recipe/recipe.service";
+import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'recipe-details',
@@ -16,7 +17,8 @@ export class RecipeDetailsPage implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private recipeService: RecipeService,
-              private http: HttpClient) {
+              private http: HttpClient,
+              public userService: UserService  ) {
   }
 
   recipeId: string;

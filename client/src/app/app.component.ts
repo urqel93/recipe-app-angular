@@ -1,7 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {AuthService} from "./services/auth/auth.service";
-import {Classes} from "./utils/classes";
-import Recipe = Classes.Recipe;
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +8,11 @@ import Recipe = Classes.Recipe;
 export class AppComponent implements OnInit {
 
 
-  constructor(private auth: AuthService) {
+  constructor() {
 
   }
 
   ngOnInit() {
-    console.log(this.auth.getTokenExpirationDate(localStorage.getItem('jwtToken')));
   }
 
 }

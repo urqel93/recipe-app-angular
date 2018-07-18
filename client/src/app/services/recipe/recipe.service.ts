@@ -9,7 +9,9 @@ import {
   MY_RECIPES,
   RECIPE_BY_HANDLE
 } from "../../utils/routes";
-import {Observable} from "rxjs/internal/Observable";
+import {Observable} from "rxjs";
+import {Interfaces} from "../../utils/interfaces";
+import IRecipe = Interfaces.IRecipe;
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +29,8 @@ export class RecipeService {
     return this.http.get(API_URL + GET_RECIPES, {headers: this.headers});
   }
 
-  getRecipeDetails(id: string): Observable<any> {
-    return this.http.get(API_URL + RECIPE_BY_HANDLE + id, {headers: this.headers});
+  getRecipeDetails(id: string): Observable<IRecipe> {
+    return this.http.get<IRecipe>(API_URL + RECIPE_BY_HANDLE + id, {headers: this.headers});
   }
 
   getMyRecipes(): Observable<any> {
@@ -45,6 +47,10 @@ export class RecipeService {
 
   commentRecipe(comment: any, id: string): Observable<any> {
     return this.http.post(API_URL + COMMENT_RECIPE + id, comment, {headers: this.headers});
+  }
+
+  getTest(): Observable<any> {
+    return this.http.get('http://b.sdidev.pl/', {headers: this.headers});
   }
 
 }

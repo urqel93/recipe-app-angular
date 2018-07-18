@@ -21,6 +21,7 @@ export class RecipesPage implements OnInit {
 
   ngOnInit() {
     this.getRecipes();
+    this.test();
   }
 
   getRecipes() {
@@ -29,6 +30,12 @@ export class RecipesPage implements OnInit {
         this.recipes.push(Recipe.create(data));
       })
       console.log(this.recipes);
+    })
+  }
+
+  test() {
+    this.recipeService.getTest().subscribe(res => {
+      console.log(res);
     })
   }
 
