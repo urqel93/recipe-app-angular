@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {Classes} from "../../../utils/classes";
 import Recipe = Classes.Recipe;
 import {Router} from "@angular/router";
@@ -19,10 +19,9 @@ export class RecipeCardComponent {
 
   @Input() recipe: Recipe;
   @Input() deleteVisible: boolean = false;
+  @Output() delete = new EventEmitter<string>();
 
-  deleteRecipe(id: string) {
-    this.recipeService.deleteRecipe(id).subscribe(res => {
-      console.log(res);
-    })
+  deleteRecipe() {
+    this.delete.emit(this.recipe.id);
   }
 }

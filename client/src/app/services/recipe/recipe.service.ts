@@ -48,9 +48,4 @@ export class RecipeService {
   commentRecipe(comment: any, id: string): Observable<any> {
     return this.http.post(API_URL + COMMENT_RECIPE + id, comment, {headers: this.headers});
   }
-
-  getTest(): Observable<any> {
-    return this.http.get('http://b.sdidev.pl/', {headers: this.headers});
-  }
-
 }

@@ -1,10 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Classes} from "../../../utils/classes";
-import Recipe = Classes.Recipe;
 import {RecipeService} from "../../../services/recipe/recipe.service";
 import {UserService} from "../../../services/user/user.service";
+import Recipe = Classes.Recipe;
 
 @Component({
   selector: 'recipe-details',
@@ -13,12 +12,17 @@ import {UserService} from "../../../services/user/user.service";
 })
 
 export class RecipeDetailsPage implements OnInit {
+  comment = {
+    text: '',
+    user: this.userService.user,
+    userName: this.userService.user.name,
+    avatar: this.userService.user.avatar
+  };
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private recipeService: RecipeService,
-              private http: HttpClient,
-              public userService: UserService  ) {
+              public userService: UserService) {
   }
 
   recipeId: string;
@@ -34,5 +38,13 @@ export class RecipeDetailsPage implements OnInit {
       this.recipe = Recipe.create(res);
       console.log(this.recipe)
     })
+  }
+
+  onComment(comment: any) {
+    this.comment.text = comment;
+    this.recipeService.commentRecipe(this.comment, this.recipeId).subscribe(res => {
+      console.log(res);
+      this.getRecipeDetails(this.recipeId);
+    });
   }
 }

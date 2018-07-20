@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, EventEmitter, Output} from "@angular/core";
 import {RecipeService} from "../../../services/recipe/recipe.service";
 import {UserService} from "../../../services/user/user.service";
 
@@ -18,19 +18,16 @@ export class RecipeFormComponent {
     userName: this.userService.user.name
   }
 
+  @Output() addRecipe = new EventEmitter<any>();
+
   constructor(private recipeService: RecipeService,
               private userService: UserService) {
 
   }
 
   onSubmit(form) {
-    this.recipeService.addRecipe(this.recipe).subscribe(res => {
-        console.log(res)
-        form.reset();
-      }, e => {
-        console.log(e);
-      }
-    )
+    this.addRecipe.emit(this.recipe);
+    form.reset();
   }
 
 }

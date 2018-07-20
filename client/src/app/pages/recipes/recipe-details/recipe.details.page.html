@@ -18,7 +18,9 @@
           <p class="card-text">{{recipe.description}}</p>
         </div>
       </div>
-      <comment-form *ngIf="userService.user" [recipeId]="recipe.id"></comment-form>
+      <comment-form *ngIf="userService.user"
+                    (onComment)="onComment($event)"
+      ></comment-form>
       <div *ngFor="let c of recipe.comments">
         <comment-item [comment]="c"></comment-item>
       </div>

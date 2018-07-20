@@ -22,10 +22,26 @@ export class MyRecipesPage implements OnInit {
 
   getMyRecipes() {
     this.recipeService.getMyRecipes().subscribe(res => {
+      this.recipes = [];
       res.forEach(data => {
         this.recipes.push(Recipe.create(data));
       })
     })
+  }
+
+  onDelete(recipeId: string) {
+    this.recipeService.deleteRecipe(recipeId).subscribe(res => {
+      this.getMyRecipes();
+    })
+  }
+
+  onAddRecipe(recipe: any) {
+    this.recipeService.addRecipe(recipe).subscribe(res => {
+        this.getMyRecipes();
+      }, e => {
+        console.log(e);
+      }
+    )
   }
 
 

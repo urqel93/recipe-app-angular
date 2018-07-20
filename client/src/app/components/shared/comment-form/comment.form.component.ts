@@ -1,6 +1,4 @@
-import {Component, Input} from "@angular/core";
-import {RecipeService} from "../../../services/recipe/recipe.service";
-import {UserService} from "../../../services/user/user.service";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 
 @Component({
   selector: 'comment-form',
@@ -9,24 +7,16 @@ import {UserService} from "../../../services/user/user.service";
 })
 
 export class CommentFormComponent {
-  @Input() recipeId: string;
-  comment = {
-    text: '',
-    user: this.userService.user,
-    userName: this.userService.user.name,
-    avatar: this.userService.user.avatar
-  };
+  @Output() onComment = new EventEmitter<any>();
+  commentText: string;
 
-  constructor(private recipeService: RecipeService,
-              private userService: UserService) {
+  constructor() {
 
   }
 
   onSubmit(form) {
-    this.recipeService.commentRecipe(this.comment, this.recipeId).subscribe(res => {
-      console.log(res);
-      form.reset();
-    });
+    this.onComment.emit(this.commentText);
+    form.reset();
   }
 
 }
